@@ -1,6 +1,5 @@
-                             MDB2MySQL README
-                   ====================================
-                             May 14, 2015
+MDB2MySQL README - May 14, 2015
+====================================
 
 Created By: Bill Lewis - Enobis (www.enobis.com)
 
@@ -11,18 +10,14 @@ This is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free
 Software Foundation - visit: http://www.gnu.org/copyleft/gpl.html
 
-                            ==================
-                               INTRODUCTION
-                            ==================
-
+INTRODUCTION
+------------------
 Plain and simple, this program was created to produce an SQL format
 comparable to mysqldump for converting Microsoft Access databases to
 MySQL.
 
-                            ==================
-                                MOTIVATION
-                            ==================
-
+MOTIVATION
+------------------
 MDB2MySQL was originally created for internal use for converting our client's
 Microsoft Access (.mdb) files to a form suitable for porting to the MySQL
 relational database.  The program is a Perl script, written to work in
@@ -45,29 +40,25 @@ tables and database sizes of 50 to upwards of 100 MBytes, this made the task
 of hand manipulation daunting.  Thus we looked to scripting the process, and
 MDB2MySQL was born.
 
-                            ==================
-                               REQUIREMENTS
-                            ==================
-
+REQUIREMENTS
+------------------
 Given that MDB2MySQL is a Perl script, the first obvious requirement is Perl.
 Which can be obtained at:
 
 http://www.perl.com/ or http://www.cpan.org/
 
-Secondly, the script requires MDB Tools version 0.5 for extracting the
-information from the MDB file.  Which can be obtained from:
+Secondly, the script requires MDB Tools version 0.5, or later, for extracting the
+information from the MDB file, which can be obtained from:
 
-http://mdbtools.sourceforge.net/
+http://github.com/brianb/mdbtools/
 
 This program has been tested on Linux machines, using Perl v5.8.4.  I
 suspect the limitation here is going to be MDB Tools, so if you can build
 MDB Tools on a different flavor of Unix, then I suspect MDB2MySQL should
 work without difficulty.
 
-                            ==================
-                                  USAGE
-                            ==================
-
+USAGE
+------------------
 Currently there are no man pages for the program, and not sure there will be
 anytime soon, so consider this file the manual for the time being.  Most of
 the options should be self explanatory, with a few exceptions.
@@ -108,10 +99,8 @@ JET3 (Access 97) and JET4 (Access 2000 & XP) versions, as well as files as
 small as 500 KB to as large as 125 MB.  While not tested, larger files should
 work as well.
 
-                            ==================
-                                DATA TYPES
-                            ==================
-
+DATA TYPES
+------------------
 The following is a list of the known Access Data Types and the corresponding
 MySQL data type used for conversion by the program:
 
@@ -135,20 +124,13 @@ MySQL data type used for conversion by the program:
 Any unknown Access data type will be converted to a blob, unless indicated
 otherwise by using the -U option.
 
-                            ==================
-                              BUGS & ISSUES
-                            ==================
-
+BUGS & ISSUES
+------------------
 There are currently no known bugs or issues, however, that doesn't mean there
-aren't any.  Please report any bugs or issues to Bill on-line at:
+aren't any.  If you find any, please report them.
 
-  http://www.enobis.com/contact/
-
-
-                            ==================
-                               LEGAL STUFF
-                            ==================
-
+LEGAL STUFF
+------------------
 This program was written by Bill Lewis and is copyrighted (C) 2004.  You may
 do whatever you like with the source code, provided that you continue to
 acknowledge the author in any distribution of it, and of any distribution of
