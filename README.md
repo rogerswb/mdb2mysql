@@ -3,7 +3,7 @@ MDB2MySQL README - May 14, 2015
 
 Created By: Bill Lewis - Enobis (www.enobis.com)
 
-Latest Version: v1.0.2
+Latest Version: v1.0.3
 Available At: http://github.com/rogerswb/mdb2mysql
 
 This is free software; you can redistribute it and/or modify it under
@@ -47,7 +47,7 @@ Which can be obtained at:
 
 http://www.perl.com/ or http://www.cpan.org/
 
-Secondly, the script requires MDB Tools version 0.5, or later, for extracting the
+Secondly, the script requires MDB Tools version 0.7.1, or later, for extracting the
 information from the MDB file, which can be obtained from:
 
 http://github.com/brianb/mdbtools/
