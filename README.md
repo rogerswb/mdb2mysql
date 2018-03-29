@@ -1,9 +1,9 @@
-MDB2MySQL README - May 14, 2015
+MDB2MySQL README - March 29, 2018
 ====================================
 
 Created By: Bill Lewis - Enobis (www.enobis.com)
 
-Latest Version: v1.0.3
+Latest Version: v1.0.4
 Available At: http://github.com/rogerswb/mdb2mysql
 
 This is free software; you can redistribute it and/or modify it under
