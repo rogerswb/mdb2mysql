@@ -25,12 +25,14 @@
 #    v1.0.2 - Fixed the greedy regex for checking date fields; text fields that start with a date
 #             would be matched and converted to a date - William Rogers, rogers.wb@gmail.com Jul 15, 2013
 #    v1.0.3 - Changed spacing for delimeters needed for modern versions of mdbtools - William Rogers, rogers.wb@gmail.com May 22, 2015
+#    v1.0.4 - Fixed incorrect mulitrow record handling that would occur when only a single
+#             character followed an opening quote before encountering a newline - William Rogers, rogers.wb@gmail.com Mar 29, 2018
 #
 #############################################################################
 use strict;
 use Getopt::Std;
 
-my $VERSION = "MDB2MySQL v1.0.3";
+my $VERSION = "MDB2MySQL v1.0.4";
 
 ##########
 #
@@ -173,6 +175,8 @@ foreach $tbl (@tables)
 
     foreach (split(/$delim/, $_, $fieldCount))
     {
+      # This if/then block appears to check to see if the current field ends on an unmatched quote,
+      # denoting a multirow/multiline record
       if(!$multirow)
       {
         # Strip Quotes from both sides of data value
@@ -182,7 +186,10 @@ foreach $tbl (@tables)
         }
         # Strip out quotes from both sides on an unchoped row resulting
         # from a multirow data record.
-        elsif(substr($_,0,1) eq '"' && substr($_,-2,1) eq '"')
+        # NOTE: Must check for the case that only a single character inside the multirow field exists
+        #       and handle that instance such that a false positive does not occur
+        # Fix for this issue was added 3/29/2018
+        elsif(substr($_,0,1) eq '"' && substr($_,-2,1) eq '"' && length($_) != 2)
         {
           $_ = substr($_,1,$#_-1);
         }
@@ -261,13 +268,13 @@ foreach $tbl (@tables)
     {
       if($opts{"e"})
       {
-        if(!$firstrecord) { print ","; }
+        if(!$firstrecord) { print ",\n"; }
         print "($values)";
         $firstrecord = 0;
       }
       else
       {
-        printf("INSERT INTO %s VALUES (%s);\n",$tbl,$values);
+        printf("INSERT INTO %s VALUES \n(%s);\n",$tbl,$values);
       }
     }
   }
